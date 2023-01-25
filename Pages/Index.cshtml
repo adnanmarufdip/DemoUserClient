@@ -49,7 +49,8 @@
     var jsonData = JSON.stringify(formData);
     console.log(jsonData);
 
-        if ($('input[name=name]').val() !== '' &&
+    // Form should not send data if required fields are empty
+    if ($('input[name=name]').val() !== '' &&
         $('input[name=email]').val() !== '' &&
         $('input[name=phone]').val() !== '' &&
         $('input[name=address]').val() !== '') {
