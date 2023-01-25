@@ -31,8 +31,6 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
-
 
 <script>
   $(document).ready(function() {
@@ -56,6 +54,8 @@
         $('input[name=phone]').val() !== '' &&
         $('input[name=address]').val() !== '') {
 
+     // Adding jquery form validation breaks the ajax functionality for some reasone.
+
     // post JSON data to web API*   
     $.ajax({
       url: 'https://localhost:44364/api/User',
@@ -68,9 +68,13 @@
         alert("Success");
       },
       error: function() {
+        $("#UserForm")[0].reset();
         alert("Failed");
       }
     });
+    }
+    else {
+        alert("Form can not be submitted empty!");
     }
   });
 });
